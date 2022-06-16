@@ -1,0 +1,172 @@
+:root {
+  --clr-midnight-neutral-200: #c1c8cf;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  color: #fff;
+}
+
+main {
+  background-color: rgb(40, 80, 107);
+  background-image: url('../assets/midnight-city.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+ul {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.left {
+  /* width: 60%; */
+  height: 100vh;
+  flex-basis: 60%;
+  /* background-color: rgba(128, 128, 128, 0.267); */
+}
+
+.right {
+  /* width: 40%; */
+  background-color: rgba(13, 17, 26, 0.631);
+  backdrop-filter: blur(1.5rem);
+  height: 100vh;
+  flex-basis: 40%;
+}
+
+.info__box {
+  background-color: rgba(13, 17, 26, 0.631);
+  backdrop-filter: blur(15px);
+  display: inline-block;
+  padding: 4rem 8rem;
+  margin: 10rem 15rem;
+  border-radius: 2rem;
+}
+
+.info__box--details {
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.current__temperature {
+  font-size: 8.5rem;
+  display: inline-block;
+}
+
+.current__city {
+  font-size: 4rem;
+  display: block;
+}
+
+.current__details {
+  font-size: 1.6rem;
+  display: block;
+}
+
+/* Search */
+
+.search__box {
+  width: 95%;
+  /* margin-left: auto; */
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-bottom: 8rem;
+}
+
+.search__input {
+  background-color: #16171a;
+  border: none;
+  width: 100%;
+  font-size: 3rem;
+  display: inline-block;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.search__btn {
+  padding: 2rem 4rem;
+  border: none;
+  background-color: #1e5380;
+  cursor: pointer;
+  transition: background 350ms ease;
+}
+
+.search__btn:hover {
+  background-color: #1b4b73;
+}
+
+.search__btn--img {
+  width: 2.5rem;
+}
+
+/* Details list */
+
+.container--details {
+  margin: 2rem 5rem 2rem;
+  font-size: 3rem;
+  color: var(--clr-midnight-neutral-200);
+}
+
+/* Details list--previous cities */
+
+.previous__cities--wrapper {
+  border-bottom: solid 1px var(--clr-midnight-neutral-200);
+  padding-bottom: 1rem;
+  margin-bottom: 4rem;
+}
+
+.previous__list--item {
+  margin-bottom: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.previous {
+  padding-bottom: 5rem;
+  border-bottom: solid 1px var(--clr-midnight-neutral-200);
+}
+
+/* Details list--current weather */
+
+.current__details--wrapper {
+  font-size: 3rem;
+  padding: 5rem 0;
+}
+
+.current__details--list-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}

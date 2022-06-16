@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="left">
+        <div class="info__box">
+          <h1 class="current__temperature">18°</h1>
+          <div class="info__box--details">
+            <h2 class="current__city">Saskatoon</h2>
+            <p class="current__details">9:25pm Tuesday, June 16</p>
+          </div>
+        </div>
+      </section>
+      <section class="right">
+        <div class="search__wrapper">
+          <form class="search__box">
+            <input type="text" class="search__input" />
+            <button class="search__btn">
+              <span
+                ><img
+                  class="search__btn--img"
+                  src="./assets/Magnefying glass - black.svg"
+                  alt="Search"
+              /></span>
+            </button>
+          </form>
+        </div>
+        <div class="container--details">
+          <div class="previous">
+            <div class="previous__cities--wrapper">
+              <h3 class="previous__cities">Previous locations</h3>
+            </div>
+            <ul class="previous__list">
+              <li class="previous__list--item">Regina</li>
+              <li class="previous__list--item">New York</li>
+              <li class="previous__list--item">Chicago</li>
+              <li class="previous__list--item">San Diego</li>
+            </ul>
+          </div>
+          <div class="current__details">
+            <div class="current__details--wrapper">
+              <h3 class="current__details--heading">Weather details</h3>
+            </div>
+            <ul class="current__details--list">
+              <li class="current__details--list-item">
+                <p class="current__clouds">Cloud cover</p>
+                <p class="current__clouds--value">86%</p>
+              </li>
+              <li class="current__details--list-item">
+                <p class="current__humidity">Humidity</p>
+                <p class="current__humidity--value">62%</p>
+              </li>
+              <li class="current__details--list-item">
+                <p class="current__wind">Wind</p>
+                <p class="current__wind--value">W 16km/h</p>
+              </li>
+              <li class="current__details--list-item">
+                <p class="current__gust">Gusting</p>
+                <p class="current__gust--value">NW 32km/h</p>
+              </li>
+              <li class="current__details--list-item">
+                <p class="current__percipitation">Percipitation</p>
+                <p class="current__percipitiation--value">1.25mm</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
