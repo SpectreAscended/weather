@@ -37,7 +37,28 @@
         /></a>
       </section>
       <section class="section__right">
-        <div class="search__wrapper">
+        <nav class="nav mobile">
+          <ul class="nav__list">
+            <li class="nav__list--left">
+              <i class="fa-solid fa-gear mobile--settings-icon"></i>
+            </li>
+            <li class="nav__list--right">
+              <div class="search__wrapper ">
+                <form class="mobile--search__box">
+                  <input type="text" class="search__input" />
+                  <button type="submit" class="search__btn">
+                    <span
+                      ><img
+                        class="search__btn--img"
+                        src="./assets/Magnefying glass - black.svg"
+                        alt="Search"
+                    /></span>
+                  </button>
+                </form>
+            </li>
+          </ul>
+        </nav>
+        <div class="search__wrapper desktop">
           <form class="search__box">
             <input type="text" class="search__input" />
             <button type="submit" class="search__btn">

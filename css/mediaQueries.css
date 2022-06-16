@@ -28,6 +28,14 @@
 }
 
 @media (max-width: 900px) {
+  .mobile {
+    display: inline-block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
   html {
     font-size: 40%;
   }
@@ -51,11 +59,14 @@
     max-height: 100%;
     backdrop-filter: blur(2px);
     padding-inline: 2rem;
-    background-repeat: repeat;
-    overflow-x: scroll;
+  }
+
+  .search__btn {
+    padding: 3rem 6rem;
   }
 
   .search__input {
+    display: none;
     transform: scaleX(0);
     transform-origin: right;
     transition: all 350ms ease-in-out;
