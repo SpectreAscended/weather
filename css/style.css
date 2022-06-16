@@ -25,6 +25,8 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   color: #efefef;
+  position: relative;
+  background-color: #16171a;
 }
 
 main {
@@ -36,6 +38,7 @@ main {
   max-height: 100vh;
   width: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 ul {
@@ -53,19 +56,20 @@ a:visited:focus {
   box-shadow: 0 0 8rem #c7d0d8;
 } */
 
-.left {
+.section__left {
   /* width: 60%; */
   height: 100vh;
   flex-basis: 60%;
   /* background-color: rgba(128, 128, 128, 0.267); */
 }
 
-.right {
+.section__right {
   /* width: 40%; */
   background-color: rgba(13, 17, 26, 0.631);
   backdrop-filter: blur(1.5rem);
   height: 100vh;
   flex-basis: 40%;
+  position: relative;
 }
 
 .info__box {
@@ -121,11 +125,16 @@ a:visited:focus {
 }
 
 .search__btn {
+  position: relative;
   padding: 2rem 4rem;
   border: none;
   background-color: #1e5380;
   cursor: pointer;
   transition: background 350ms ease;
+}
+
+.search__btn:hover {
+  background-color: #1b4b73;
 }
 
 .search__input:focus {
@@ -136,10 +145,6 @@ a:visited:focus {
   /* outline: solid 1rem #1e5380;
   outline-offset: 1rem; */
   box-shadow: 0 0 8rem #c7d0d8;
-}
-
-.search__btn:hover {
-  background-color: #1b4b73;
 }
 
 .search__btn--img {
@@ -196,6 +201,58 @@ a:visited:focus {
 
 /* SETTINGS */
 
-.settings {
+.homepage-link {
   width: 20rem;
+  position: absolute;
+  bottom: 5rem;
+  left: 10rem;
+}
+
+.settings-icon {
+  position: absolute;
+  top: 10rem;
+  right: 2.5rem;
+  font-size: 5rem;
+  color: #928dab;
+  transition: all 350ms ease;
+  cursor: pointer;
+}
+
+.settings-icon:hover {
+  color: #837f9a;
+  animation: spin 5000ms;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 40%;
+  }
+  main {
+    flex-direction: column;
+    background-size: cover;
+    background-position: top;
+    max-height: 100%;
+    align-items: center;
+  }
+
+  .search__input {
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: all 350ms ease-in-out;
+  }
 }
