@@ -8,6 +8,7 @@ const mobilePreviousOverlay = document.querySelector(
 const infoBox = document.querySelector('.info__box');
 const mobileInfoBox = document.querySelector('.mobile-info__box');
 const currentDetails = document.querySelector('.current__details--list');
+const previousList = document.querySelector('.previous__list');
 
 const key = 'd9819c90d382ddc65dcc500f8e98498f';
 
@@ -54,25 +55,37 @@ const weatherData = async function (query) {
       );
       throw new Error(`Couldn't find your city.  Please try again`);
     }
-    previousSearches.unshift(data.name);
+
     console.log(data);
     console.log(previousSearches);
 
     const currentWeatherData = {
       city: data.name,
       currentTemp: Math.round(data.main.temp),
+      feelsLike: Math.round(data.main['feels_like']),
       humidity: data.main.humidity,
       windSpeed: Math.round(data.wind.speed),
       windDir: data.wind.deg,
-      windGust: Math.round(data.wind.gust),
+      windGust: Math.round(data.wind?.gust),
       cloudCover: data.clouds.all,
+      conditions: data.weather[0].description,
     };
 
+    console.log(currentWeatherData);
+
     const infoBoxMarkup = `
+    <div class="info__box--temperature">
     <h1 class="current__temperature">${currentWeatherData.currentTemp}°</h1>
+    </div> 
     <div class="info__box--details">
       <h2 class="current__city">${currentWeatherData.city}</h2>
-      <p class="current__details">9:25pm Tuesday, June 16</p>
+      <p class="current__conditions">${currentWeatherData.conditions}</p>
+      
+    </div>
+    <p class="current__feels-like">Feels like: ${currentWeatherData.feelsLike}°</p>
+    <p class="current__details">9:25pm Tuesday, June 16</p>
+    
+
     `;
 
     const detailsMarkup = `
@@ -92,7 +105,9 @@ const weatherData = async function (query) {
   </li>
   <li class="current__details--list-item">
     <p class="current__gust">Gusting</p>
-    <p class="current__gust--value">${currentWeatherData.windGust}km/h</p>
+    <p class="current__gust--value">${
+      currentWeatherData.windGust ? currentWeatherData.windGust : '0'
+    }km/h</p>
   </li>
   <li class="current__details--list-item">
     <p class="current__percipitation">Percipitation</p>
@@ -100,7 +115,9 @@ const weatherData = async function (query) {
   </li>
     `;
 
+    handlePrevSearches(data.name);
     resetValues();
+
     infoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     mobileInfoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     currentDetails.insertAdjacentHTML('beforeend', detailsMarkup);
@@ -122,4 +139,25 @@ const resetValues = function () {
   infoBox.innerHTML = '';
   mobileInfoBox.innerHTML = '';
   currentDetails.innerHTML = '';
+};
+
+const handlePrevSearches = function (city) {
+  // Checks if city name is in array. If it isnt, it adds the city to the array. If it is, it deletes it and adds it again at the beginning.  It deletes the end array item when the array becomes greater than 4.
+  if (!previousSearches.includes(city)) previousSearches.unshift(city);
+  else {
+    const index = previousSearches.indexOf(city);
+    previousSearches.splice(index, 1);
+    previousSearches.unshift(city);
+  }
+  if (previousSearches.length > 4) {
+    previousSearches.pop();
+  }
+
+  previousList.innerHTML = '';
+  previousSearches.forEach(item => {
+    previousList.insertAdjacentHTML(
+      'beforeend',
+      `<li class="previous__list--item"><a href="#">${item}</a></li>`
+    );
+  });
 };

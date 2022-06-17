@@ -5,7 +5,8 @@
 
   .info__box {
     padding: 3rem 6rem;
-    margin: 10rem 10rem;
+    margin: 10rem 16rem;
+    column-gap: 2rem;
   }
 
   .current__temperature {
@@ -33,11 +34,12 @@
   }
 
   .info__box {
-    padding: 1.5rem 4rem;
+    padding: 2.5rem 4rem;
+    margin: 10rem 8rem;
   }
 
   .current__city {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .previous__cities {
@@ -182,8 +184,13 @@
     text-align: center;
   }
 
+  .current__temperature {
+    font-size: 9rem;
+  }
+
   .current__city {
     text-align: left;
+    font-size: 3.5rem;
   }
 
   .current__details--heading {
