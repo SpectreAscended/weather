@@ -13,8 +13,10 @@ const searchBtn = document.querySelector('.search__btn');
 const searchInput = document.querySelector('.search__input');
 const mobilePrevious = document.querySelector('.mobile--previous');
 const mobilePreviousOverlay = document.querySelector(
-  '.mobile--previous__overlay'
+  '.mobile__overlay--previous'
 );
+
+const mobileSettings = document.querySelector('.mobile--settings-icon');
 
 searchBtn.addEventListener('click', function (e) {
   if (!clicked) {
@@ -40,4 +42,8 @@ mobilePrevious.addEventListener('click', function () {
     .addEventListener('click', function () {
       mobilePreviousOverlay.style.transform = 'translateY(-2000px)';
     });
+});
+
+mobileSettings.addEventListener('click', function () {
+  document.querySelector('.mobile__overlay').style.transform = 'translateY(0)';
 });

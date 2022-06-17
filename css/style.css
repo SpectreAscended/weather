@@ -133,6 +133,10 @@ a:visited {
   /* justify-content: space-between; */
 }
 
+.mobile__overlay {
+  display: none;
+}
+
 .mobile--previous {
   font-size: 2.4rem;
   cursor: pointer;
