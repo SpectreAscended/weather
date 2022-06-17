@@ -186,6 +186,10 @@
     text-align: center;
   }
 
+  .current__city {
+    text-align: left;
+  }
+
   .current__details--heading {
     text-align: center;
   }
