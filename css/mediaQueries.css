@@ -28,13 +28,32 @@
 }
 
 @media (max-width: 900px) {
-  .nav {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
+  html {
+    font-size: 35%;
   }
 
+  .info__box {
+    padding: 1.5rem 4rem;
+  }
+
+  .current__city {
+    font-size: 2.5rem;
+  }
+
+  .previous__cities {
+    font-size: 2.5rem;
+  }
+
+  .current__details--heading {
+    font-size: 2.5rem;
+  }
+
+  .current__details {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
   .mobile {
     display: inline-block;
   }
@@ -42,16 +61,19 @@
   .desktop {
     display: none;
   }
-
-  html {
-    font-size: 40%;
-  }
   main {
     flex-direction: column;
     background-size: cover;
     background-position: top;
     max-height: 100%;
     align-items: center;
+  }
+
+  .nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 
   .section__left {
@@ -106,9 +128,9 @@
   }
 
   /* .hidden {
-    opacity: 0;
-    visibility: hidden;
-  } */
+        opacity: 0;
+        visibility: hidden;
+      } */
 
   .mobile--previous__list--heading {
     background-color: rgba(13, 17, 26, 1);
@@ -154,8 +176,8 @@
   }
 
   /* .mobile--previous__list--item a:hover,
-  .mobile--previous__list--item a:active {
-  } */
+      .mobile--previous__list--item a:active {
+      } */
 
   .mobile-info__box {
     display: block;
@@ -167,9 +189,6 @@
   .current__details--heading {
     text-align: center;
   }
-}
-
-@media (max-width: 600px) {
   .section__right {
     width: 100%;
   }
