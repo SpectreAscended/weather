@@ -58,7 +58,6 @@
     flex-shrink: 0;
     max-height: 100%;
     backdrop-filter: blur(2px);
-    padding-inline: 2rem;
   }
 
   .search__btn {

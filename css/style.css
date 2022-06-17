@@ -118,8 +118,9 @@ a:visited {
 /* Nav bar */
 
 .nav {
+  display: block;
   width: 100%;
-  background-color: orangred;
+  background-color: rgba(13, 17, 26, 0.4);
   /* height: 4rem; */
   margin-bottom: 4rem;
 }
@@ -127,20 +128,38 @@ a:visited {
 .nav__list {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
+}
+
+.mobile--previous {
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.mobile--search__btn {
+  position: relative;
+  padding: 2rem 4rem;
+  border: none;
+  background-color: #1e5380;
+  cursor: pointer;
+  transition: background 350ms ease;
 }
 
 .nav__list--left {
-  flex-basis: 60%;
-  background-color: rgba(13, 17, 26, 0.8);
-  height: 100%;
+  flex-basis: 80%;
+  justify-self: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
 }
 
 .nav__list--right {
-  flex-basis: 40%;
+  flex-basis: auto;
 }
 
 .mobile--settings-icon {
-  font-size: 5rem;
+  font-size: 4rem;
   color: #928dab;
   transition: all 350ms ease;
   cursor: pointer;
