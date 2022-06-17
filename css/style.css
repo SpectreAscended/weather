@@ -85,6 +85,10 @@ a:visited {
   border-radius: 2rem;
 }
 
+.info__box--default {
+  font-size: 3rem;
+}
+
 .mobile-info__box {
   display: none;
 }
