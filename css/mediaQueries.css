@@ -28,6 +28,10 @@
 }
 
 @media (max-width: 900px) {
+  .nav {
+    display: block;
+  }
+
   .mobile {
     display: inline-block;
   }
