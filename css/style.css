@@ -97,11 +97,13 @@ a:visited {
 .current__temperature {
   font-size: 10rem;
   display: inline-block;
+  color: #efefef;
 }
 
 .current__city {
   font-size: 5rem;
   display: block;
+  color: #efefef;
 }
 
 .current__details {

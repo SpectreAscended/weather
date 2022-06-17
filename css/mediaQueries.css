@@ -30,6 +30,9 @@
 @media (max-width: 900px) {
   .nav {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 
   .mobile {
@@ -62,6 +65,7 @@
     flex-shrink: 0;
     max-height: 100%;
     backdrop-filter: blur(2px);
+    padding-top: 10rem;
   }
 
   .search__btn {
@@ -83,10 +87,80 @@
     display: none;
   }
 
+  .nav__list--left {
+    position: relative;
+  }
+
+  .mobile--previous__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(13, 17, 26, 0.95);
+    backdrop-filter: blur(0.5rem);
+    z-index: 100;
+    transition: all 800ms ease-in-out;
+    transform: translateY(-200rem);
+  }
+
+  /* .hidden {
+    opacity: 0;
+    visibility: hidden;
+  } */
+
+  .mobile--previous__list--heading {
+    background-color: rgba(13, 17, 26, 1);
+    font-size: 5rem;
+    border-bottom: solid 1px var(--clr-midnight-neutral-200);
+    text-align: center;
+    padding: 5rem 0 5rem;
+    cursor: pointer;
+    transition: color 250ms;
+    user-select: none;
+  }
+
+  .mobile--previous__list--heading:hover {
+    color: #ddd;
+  }
+
+  .mobile--previous__list {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-top: 0rem;
+  }
+
+  .mobile--previous__list--item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile--previous__list--item:hover {
+    background-color: rgba(9, 56, 75, 0.74);
+    color: #ddd;
+    display: block;
+    padding: 5rem auto;
+  }
+
+  .mobile--previous__list--item a:link,
+  .mobile--previous__list--item a:visited {
+    font-size: 4rem;
+    display: block;
+    padding: 2rem;
+    width: 100%;
+    color: inherit;
+    z-index: 200;
+  }
+
+  /* .mobile--previous__list--item a:hover,
+  .mobile--previous__list--item a:active {
+  } */
+
   .mobile-info__box {
     display: block;
     padding-bottom: 2rem;
     border-bottom: solid 1px var(--clr-midnight-neutral-200);
+    text-align: center;
   }
 
   .current__details--heading {
@@ -105,6 +179,6 @@
 
 @media (max-width: 450px) {
   .container--details {
-    margin: 1rem 1rem;
+    margin: 1rem 3rem;
   }
 }
