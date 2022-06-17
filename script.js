@@ -100,9 +100,7 @@ const weatherData = async function (query) {
   </li>
     `;
 
-    infoBox.innerHTML = '';
-    mobileInfoBox.innerHTML = '';
-    currentDetails.innerHTML = '';
+    resetValues();
     infoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     mobileInfoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     currentDetails.insertAdjacentHTML('beforeend', detailsMarkup);
@@ -119,3 +117,9 @@ searchBtn.addEventListener('click', function (e) {
 
   weatherData(query);
 });
+
+const resetValues = function () {
+  infoBox.innerHTML = '';
+  mobileInfoBox.innerHTML = '';
+  currentDetails.innerHTML = '';
+};
