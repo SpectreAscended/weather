@@ -14,7 +14,8 @@ const key = 'd9819c90d382ddc65dcc500f8e98498f';
 
 const mobileSettings = document.querySelector('.mobile--settings-icon');
 
-const previousSearches = [];
+const loadSearches = JSON.parse(localStorage.getItem('prevSearches'));
+const [...previousSearches] = loadSearches;
 
 const windDirection = function (dir) {
   if (dir >= 337.5 || dir < 22.5) return 'N';
@@ -139,6 +140,7 @@ searchBtn.addEventListener('click', function (e) {
 const init = function () {
   const currentCity = localStorage.getItem('currentCity');
   console.log(currentCity);
+  const loadedSearches = JSON.parse(localStorage.getItem('prevSearches'));
   currentCity && weatherData(currentCity);
 };
 
