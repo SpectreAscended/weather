@@ -9,11 +9,9 @@ const infoBox = document.querySelector('.info__box');
 const mobileInfoBox = document.querySelector('.mobile-info__box');
 const currentDetails = document.querySelector('.current__details--list');
 const previousList = document.querySelector('.previous__list');
-
 const key = 'd9819c90d382ddc65dcc500f8e98498f';
-
 const mobileSettings = document.querySelector('.mobile--settings-icon');
-
+const containerDetails = document.querySelector('.container--details');
 const loadSearches = JSON.parse(localStorage.getItem('prevSearches'));
 
 let previousSearches = [];
@@ -59,6 +57,8 @@ const weatherData = async function (query) {
       );
       throw new Error(`Couldn't find your city.  Please try again`);
     }
+
+    containerDetails.style.opacity = '1';
 
     console.log(data);
 
@@ -181,7 +181,7 @@ const handlePrevSearches = function (city) {
     previousSearches.splice(index, 1);
     previousSearches.unshift(city);
   }
-  if (previousSearches.length > 4) {
+  if (previousSearches.length > 5) {
     previousSearches.pop();
   }
 
@@ -218,3 +218,5 @@ const getReportTime = function (epoch) {
     date.toLocaleDateString('us-EN', options)
   );
 };
+
+// localStorage.clear();

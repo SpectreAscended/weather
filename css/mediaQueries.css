@@ -41,6 +41,10 @@
     margin: 4rem 10rem;
   }
 
+  .info__box--default {
+    font-size: 2rem;
+  }
+
   .current__city {
     font-size: 3rem;
   }
@@ -95,6 +99,14 @@
     max-height: 100%;
     backdrop-filter: blur(2px);
     padding-top: 10rem;
+  }
+
+  .container--details {
+    opacity: 1;
+  }
+
+  .info__box--default {
+    font-size: 3rem;
   }
 
   .mobile-info__box {
