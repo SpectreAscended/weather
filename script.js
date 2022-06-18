@@ -61,18 +61,20 @@ const weatherData = async function (query) {
     }
 
     console.log(data);
-    console.log(previousSearches);
 
     const currentWeatherData = {
       city: data.name,
       currentTemp: Math.round(data.main.temp),
       feelsLike: Math.round(data.main['feels_like']),
       humidity: data.main.humidity,
-      windSpeed: Math.round(data.wind.speed),
+      windSpeed: Math.round(data.wind.speed * 3.6),
       windDir: data.wind.deg,
-      windGust: Math.round(data.wind?.gust),
+      windGust: Math.round(data.wind?.gust * 3.6),
       cloudCover: data.clouds.all,
       conditions: data.weather[0].description,
+      rain: data?.rain?.['1h'],
+      snow: data?.snow?.['1h'] / 10,
+      time: data.dt,
     };
 
     console.log(currentWeatherData);
@@ -86,10 +88,10 @@ const weatherData = async function (query) {
       <p class="current__conditions">${currentWeatherData.conditions}</p>
       
     </div>
-    <p class="current__feels-like">Feels like: ${currentWeatherData.feelsLike}°</p>
-    <p class="current__details">9:25pm Tuesday, June 16</p>
-    
-
+    <p class="current__feels-like">Feels like: ${
+      currentWeatherData.feelsLike
+    }°</p>
+    <p class="current__details">${getReportTime(currentWeatherData.time)}</p>
     `;
 
     const detailsMarkup = `
@@ -105,19 +107,14 @@ const weatherData = async function (query) {
     <p class="current__wind">Wind</p>
     <p class="current__wind--value">${windDirection(
       currentWeatherData.windDir
-    )} ${currentWeatherData.windSpeed}km/h</p>
+    )} ${currentWeatherData.windSpeed} km/h</p>
   </li>
   <li class="current__details--list-item">
     <p class="current__gust">Gusting</p>
     <p class="current__gust--value">${
       currentWeatherData.windGust ? currentWeatherData.windGust : '0'
-    }km/h</p>
-  </li>
-  <li class="current__details--list-item">
-    <p class="current__percipitation">Percipitation</p>
-    <p class="current__percipitiation--value">0</p>
-  </li>
-    `;
+    } km/h</p>
+  </li>`;
 
     handlePrevSearches(data.name);
     resetValues();
@@ -125,7 +122,28 @@ const weatherData = async function (query) {
     infoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     mobileInfoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     currentDetails.insertAdjacentHTML('beforeend', detailsMarkup);
-    console.log(previousList.children[0].innerHTML);
+
+    currentWeatherData.rain &&
+      currentDetails.insertAdjacentHTML(
+        'beforeend',
+        `
+        <li class="current__details--list-item">
+                  <p class="current__rain">Rain</p>
+                  <p class="current__rain--value">${currentWeatherData.rain} mm</p>
+                  </li>
+      `
+      );
+
+    currentWeatherData.snow &&
+      currentDetails.insertAdjacentHTML(
+        'beforeend',
+        `
+          <li class="current__details--list-item">
+          <p class="current__snow">Snow</p>
+          <p class="current__snow--value">${currentWeatherData.snow} cm</p>
+          </li>
+    `
+      );
   } catch (err) {
     console.error('Problem retrieving weather data', err);
   }
@@ -184,3 +202,19 @@ previousList.addEventListener('click', function (e) {
   weatherData(city);
   localStorage.setItem('currentCity', city);
 });
+
+const getReportTime = function (epoch) {
+  // Multiply by 1000 to convert seconds to miliseconds
+  const date = new Date(epoch * 1000);
+  const options = {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  return (
+    date.toLocaleTimeString() +
+    ' - ' +
+    date.toLocaleDateString('us-EN', options)
+  );
+};
