@@ -121,6 +121,7 @@ const weatherData = async function (query) {
     infoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     mobileInfoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     currentDetails.insertAdjacentHTML('beforeend', detailsMarkup);
+    console.log(previousList.children[0].innerHTML);
   } catch (err) {
     console.error('Problem retrieving weather data', err);
   }
@@ -129,11 +130,19 @@ const weatherData = async function (query) {
 searchBtn.addEventListener('click', function (e) {
   e.preventDefault();
   const query = searchInput.value;
-
+  localStorage.removeItem('currentCity');
   searchInput.value = '';
-
+  localStorage.setItem('currentCity', query);
   weatherData(query);
 });
+
+const init = function () {
+  const currentCity = localStorage.getItem('currentCity');
+  console.log(currentCity);
+  currentCity && weatherData(currentCity);
+};
+
+init();
 
 const resetValues = function () {
   infoBox.innerHTML = '';
@@ -143,8 +152,10 @@ const resetValues = function () {
 
 const handlePrevSearches = function (city) {
   // Checks if city name is in array. If it isnt, it adds the city to the array. If it is, it deletes it and adds it again at the beginning.  It deletes the end array item when the array becomes greater than 4.
-  if (!previousSearches.includes(city)) previousSearches.unshift(city);
-  else {
+
+  if (!previousSearches.includes(city)) {
+    previousSearches.unshift(city);
+  } else {
     const index = previousSearches.indexOf(city);
     previousSearches.splice(index, 1);
     previousSearches.unshift(city);
@@ -153,11 +164,18 @@ const handlePrevSearches = function (city) {
     previousSearches.pop();
   }
 
+  localStorage.setItem('prevSearches', JSON.stringify(previousSearches));
+
+  const loadedSearches = JSON.parse(localStorage.getItem('prevSearches'));
+
   previousList.innerHTML = '';
-  previousSearches.forEach(item => {
+  loadedSearches.forEach(item => {
     previousList.insertAdjacentHTML(
       'beforeend',
-      `<li class="previous__list--item"><a href="#">${item}</a></li>`
+      `<li class="previous__list--item">${item}</li>`
     );
   });
 };
+previousList.addEventListener('click', function (e) {
+  weatherData(e.target.innerHTML);
+});
