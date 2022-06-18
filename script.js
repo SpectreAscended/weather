@@ -180,5 +180,7 @@ const handlePrevSearches = function (city) {
   });
 };
 previousList.addEventListener('click', function (e) {
-  weatherData(e.target.innerHTML);
+  const city = e.target.innerHTML;
+  weatherData(city);
+  localStorage.setItem('currentCity', city);
 });
