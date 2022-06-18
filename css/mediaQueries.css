@@ -24,18 +24,13 @@
 
 @media (max-width: 1200px) {
   html {
-    font-size: 50%;
+    font-size: 45%;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   html {
     font-size: 35%;
-  }
-
-  .info__box {
-    padding: 2.5rem 4rem;
-    margin: 10rem 8rem;
   }
 
   .current__city {
@@ -90,6 +85,17 @@
     max-height: 100%;
     backdrop-filter: blur(2px);
     padding-top: 10rem;
+    padding: 8rem 2rem 0 2rem;
+  }
+
+  .mobile-info__box {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  .current__conditions {
+    text-align: center;
   }
 
   .search__btn {
@@ -178,7 +184,7 @@
   }
 
   .mobile-info__box {
-    display: block;
+    display: grid;
     padding-bottom: 2rem;
     border-bottom: solid 1px var(--clr-midnight-neutral-200);
     text-align: center;
