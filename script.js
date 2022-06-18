@@ -160,13 +160,6 @@ searchBtn.addEventListener('click', function (e) {
   searchInput.value = '';
   localStorage.setItem('currentCity', query);
   weatherData(query);
-  if (query === 'beijing') {
-    document.querySelector('main').style.backgroundImage =
-      "url('../assets/save-our-planet.jpg')";
-  } else {
-    document.querySelector('main').style.backgroundImage =
-      "url('../assets/midnight-city.jpg')";
-  }
 });
 
 const init = function () {
@@ -185,13 +178,11 @@ const resetValues = function () {
 const handlePrevSearches = function (city) {
   // Checks if city name is in array. If it isnt, it adds the city to the array. If it is, it deletes it and adds it again at the beginning.  It deletes the end array item when the array becomes greater than 4.
 
-  if (!previousSearches.includes(city)) {
-    previousSearches.unshift(city);
-  } else {
+  if (previousSearches.includes(city)) {
     const index = previousSearches.indexOf(city);
     previousSearches.splice(index, 1);
-    previousSearches.unshift(city);
   }
+  previousSearches.unshift(city);
 
   if (previousSearches.length > 5) {
     previousSearches.pop();
