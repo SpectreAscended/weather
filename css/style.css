@@ -35,6 +35,7 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+  /* background-position-y: 20%; */
   max-height: 100vh;
   width: 100%;
   display: flex;

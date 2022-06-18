@@ -12,21 +12,27 @@ const previousList = document.querySelector('.previous__list');
 const key = 'd9819c90d382ddc65dcc500f8e98498f';
 const mobileSettings = document.querySelector('.mobile--settings-icon');
 const containerDetails = document.querySelector('.container--details');
-const loadSearches = JSON.parse(localStorage.getItem('prevSearches'));
 
 let previousSearches = [];
 
-if (loadSearches) [...previousSearches] = loadSearches;
+const loadPrevSearchesList = function () {
+  const loadSearches = JSON.parse(localStorage.getItem('prevSearches'));
+
+  if (loadSearches) [...previousSearches] = loadSearches;
+};
+loadPrevSearchesList();
 
 const windDirection = function (dir) {
-  if (dir >= 337.5 || dir < 22.5) return 'N';
-  if (dir >= 22.5 && dir < 67.5) return 'NE';
-  if (dir >= 67.5 && dir < 112.5) return 'E';
-  if (dir >= 112.5 && dir < 157.5) return 'SE';
-  if (dir >= 157.5 && dir < 202.5) return 'S';
-  if (dir >= 202.5 && dir < 247.5) return 'SW';
-  if (dir >= 247.5 && dir < 292.5) return 'W';
-  if (dir >= 292.5 && dir < 337.5) return 'NW';
+  let windDirection;
+  if (dir >= 337.5 || dir < 22.5) windDirection = 'N';
+  if (dir >= 22.5 && dir < 67.5) windDirection = 'NE';
+  if (dir >= 67.5 && dir < 112.5) windDirection = 'E';
+  if (dir >= 112.5 && dir < 157.5) windDirection = 'SE';
+  if (dir >= 157.5 && dir < 202.5) windDirection = 'S';
+  if (dir >= 202.5 && dir < 247.5) windDirection = 'SW';
+  if (dir >= 247.5 && dir < 292.5) windDirection = 'W';
+  if (dir >= 292.5 && dir < 337.5) windDirection = 'NW';
+  return windDirection;
 };
 
 mobilePrevious.addEventListener('click', function () {
@@ -118,7 +124,6 @@ const weatherData = async function (query) {
 
     handlePrevSearches(data.name);
     resetValues();
-
     infoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     mobileInfoBox.insertAdjacentHTML('beforeend', infoBoxMarkup);
     currentDetails.insertAdjacentHTML('beforeend', detailsMarkup);
@@ -128,9 +133,9 @@ const weatherData = async function (query) {
         'beforeend',
         `
         <li class="current__details--list-item">
-                  <p class="current__rain">Rain</p>
-                  <p class="current__rain--value">${currentWeatherData.rain} mm</p>
-                  </li>
+          <p class="current__rain">Rain</p>
+          <p class="current__rain--value">${currentWeatherData.rain} mm</p>
+        </li>
       `
       );
 
@@ -139,8 +144,8 @@ const weatherData = async function (query) {
         'beforeend',
         `
           <li class="current__details--list-item">
-          <p class="current__snow">Snow</p>
-          <p class="current__snow--value">${currentWeatherData.snow} cm</p>
+            <p class="current__snow">Snow</p>
+            <p class="current__snow--value">${currentWeatherData.snow} cm</p>
           </li>
     `
       );
@@ -152,10 +157,16 @@ const weatherData = async function (query) {
 searchBtn.addEventListener('click', function (e) {
   e.preventDefault();
   const query = searchInput.value;
-  localStorage.removeItem('currentCity');
   searchInput.value = '';
   localStorage.setItem('currentCity', query);
   weatherData(query);
+  if (query === 'beijing') {
+    document.querySelector('main').style.backgroundImage =
+      "url('../assets/save-our-planet.jpg')";
+  } else {
+    document.querySelector('main').style.backgroundImage =
+      "url('../assets/midnight-city.jpg')";
+  }
 });
 
 const init = function () {
@@ -181,6 +192,7 @@ const handlePrevSearches = function (city) {
     previousSearches.splice(index, 1);
     previousSearches.unshift(city);
   }
+
   if (previousSearches.length > 5) {
     previousSearches.pop();
   }
@@ -197,6 +209,7 @@ const handlePrevSearches = function (city) {
     );
   });
 };
+
 previousList.addEventListener('click', function (e) {
   const city = e.target.innerHTML;
   weatherData(city);
@@ -212,11 +225,11 @@ const getReportTime = function (epoch) {
     day: 'numeric',
   };
 
-  return (
-    date.toLocaleTimeString() +
-    ' - ' +
-    date.toLocaleDateString('us-EN', options)
-  );
+  return `${date.toLocaleTimeString()} - ${date.toLocaleDateString(
+    'us-EN',
+    options
+  )}
+  `;
 };
 
 // localStorage.clear();
