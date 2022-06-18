@@ -55,7 +55,13 @@ const weatherData = async function (query) {
     );
     const data = await url.json();
 
-    if (data.cod === '404') {
+    const forecastUrl = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=d9819c90d382ddc65dcc500f8e98498f&units=metric`
+    );
+
+    const forecastData = await forecastUrl.json();
+
+    if (data.cod === '404' || forecastData.cod === '404') {
       infoBox.innerHTML = '';
       infoBox.insertAdjacentHTML(
         'beforeend',
@@ -67,6 +73,8 @@ const weatherData = async function (query) {
     containerDetails.style.opacity = '1';
 
     console.log(data);
+    console.log(forecastData);
+    console.log(new Date(forecastData.list[10].dt * 1000));
 
     const currentWeatherData = {
       city: data.name,
@@ -224,3 +232,7 @@ const getReportTime = function (epoch) {
 };
 
 // localStorage.clear();
+
+document.querySelector('.info__box').addEventListener('click', function (e) {
+  console.log(e);
+});

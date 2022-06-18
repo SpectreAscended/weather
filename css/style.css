@@ -63,7 +63,7 @@ a:visited {
 .section__left {
   height: 100vh;
   flex-basis: 60%;
-  background-color: rgba(128, 128, 128, 0.267);
+  /* background-color: rgba(128, 128, 128, 0.267); */
 }
 
 .section__right {
@@ -88,6 +88,7 @@ a:visited {
   padding: 2rem 0 4rem 0;
   margin: 10rem 20rem;
   border-radius: 2rem;
+  user-select: none;
 }
 
 .info__box--temperature {
