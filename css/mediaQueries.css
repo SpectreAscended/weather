@@ -33,6 +33,14 @@
     font-size: 35%;
   }
 
+  .container--details {
+    margin: 3rem;
+  }
+
+  .info__box {
+    margin: 4rem 10rem;
+  }
+
   .current__city {
     font-size: 3rem;
   }
@@ -47,6 +55,7 @@
 
   .current__details {
     font-size: 2rem;
+    /* padding: 0 2rem; */
   }
 }
 
@@ -58,6 +67,7 @@
   .desktop {
     display: none;
   }
+
   main {
     flex-direction: column;
     background-size: cover;
@@ -85,7 +95,6 @@
     max-height: 100%;
     backdrop-filter: blur(2px);
     padding-top: 10rem;
-    padding: 8rem 2rem 0 2rem;
   }
 
   .mobile-info__box {
@@ -167,7 +176,7 @@
   }
 
   .mobile--previous__list--item:hover {
-    background-color: rgba(9, 56, 75, 0.74);
+    background-color: rgba(9, 56, 75, 0.8);
     color: #ddd;
     display: block;
     padding: 5rem auto;
@@ -212,6 +221,6 @@
 
 @media (max-width: 450px) {
   .container--details {
-    margin: 1rem 3rem;
+    margin: 1rem 4rem;
   }
 }
